@@ -119,6 +119,6 @@ frontend: {
       required: true,
       id: "sftp.supplier.delete-remote-files",
       size: CommonSizeEnums.MEDIUM,
-    },
+    }
   ]
   }
