@@ -1,28 +1,124 @@
 frontend: {
     "worker": "sftp-collect",
     "properties": [
-      {
-        "name": "remote-path",
-        "type": "basic",
-        "description": "Directory on remote server to collect files from",
-        "component": {
-          "type": "text",
-          "validation": {
-            "minLength": 3,
-            "maxLength": 10
-          }
-        },
-        "deployment-property": "sftp.supplier.path"
+   
+    {
+      name: "connection-id",
+      // "type": "basic",
+      helperText: "To get the connection details by Id, rest API call.",
+      component: ComponentEnums.FormInputText,
+      placeholder: "Enter Connection Id",
+      label: "Connection Id",
+      validation: {
+        onIncrementalChange: {
+          [ValidationTypeEnums.REQUIRED]: {
+            message: 'Connection Id is required.',
+            value: true,
+          },
+          [ValidationTypeEnums.MIN_LENGTH]: {
+            message: 'Connection Id must contain at least 25 characters.',
+            value: 25,
+          },
+          [ValidationTypeEnums.MAX_LENGTH]: {
+            message: 'Connection Id must contain at most 30 characters.',
+            value: 30,
+          },
+        }
       },
-      {
-        "name": "flag-file-enabled",
-        "type": "advanced",
-        "description": "Enable flag file check before file collection",
-        "component": {
-          "type": "check",
-          "defaultValue": false
+      required: true,
+      id: "sftp.source.custom.connection_id",
+      size: CommonSizeEnums.MEDIUM,
+    },
+
+    {
+      name: "post-collect-action",
+      // type: "basic",
+      helperText: "What should be done with the original files on the remote system after successful collection",
+      component: ComponentEnums.FormInputSelect,
+      placeholder: "Select Post Collect Action",
+      label: "Select Post Collect Action",
+      defaultValue: "Ignore",
+      validation: {},
+      required: false,
+      lookup: [
+          {
+              id: 1,
+              label: "Ignore",
+              value: "Ignore"
+          },
+          {
+              id: 2,
+              label: "Rename files",
+              value: "rename-files"
+          },
+          {
+              id: 3,
+              label: "Move files",
+              value: "move-files"
+          },
+          {
+              id: 4,
+              label: "Delete files",
+              value: "delete-files"
+          }
+      ],
+      size: CommonSizeEnums.MEDIUM
+    },
+    {
+      name: "rename-remote-file",
+      // type: "advanced",
+      helperText: "Set a exppression to rename files on remote SFTP server",
+      component: ComponentEnums.FormInputText,
+      placeholder: "Rename file expression",
+      label: "Rename file expression",
+      conditionalRender: {
+        'post-collect-action': (value: string | boolean): boolean => {
+          return value === 'rename-files';
         },
-        "deployment-property": "flag-file-enabled"
-      }
-    ]
+      },
+      defaultValue: "none",
+      validation: {},
+      required: true,
+      id: "sftp.supplier.rename-remote-files-to",
+      size: CommonSizeEnums.MEDIUM,
+    },
+    {
+      name: "move-remote-file",
+      // type: "advanced",
+      helperText: "Set a exppression to move files on remote SFTP server",
+      component: ComponentEnums.FormInputText,
+      placeholder: "Move file expression",
+      label: "Move file expression",
+      conditionalRender: {
+        'post-collect-action': (value: string | boolean): boolean => {
+          return value === 'move-files';
+        },
+      },
+      defaultValue: "none",
+      validation: {},
+      required: true,
+      id: "sftp.supplier.rename-remote-files-to-move",
+      size: CommonSizeEnums.MEDIUM,
+    },
+    {
+      name: "delete-remote-file",
+      // type: "advanced",
+      helperText: "Delete remote file",
+      component: ComponentEnums.FormInputCheckbox,
+      placeholder: "Delete remote file",
+      label: "Delete remote file",
+      conditionalRender: {
+        'post-collect-action': (value: string | boolean): boolean => {
+          return value === 'delete-files';
+        },
+      },
+      checked: false,
+      value: true,
+      // disabled: true,
+      validation: {},
+      required: true,
+      id: "sftp.supplier.delete-remote-files",
+      size: CommonSizeEnums.MEDIUM,
+    },
+  ]
   }
