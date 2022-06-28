@@ -1,6 +1,7 @@
 worker: sftp-collect
 frontend: |
-  [
+  {
+  basic_fields: [
     {
       name: "connection_id",
       helperText: "The remote connection to use.",
@@ -222,6 +223,18 @@ frontend: |
     },
     {
       color: CommonColorEnums.PRIMARY,
+      component: ComponentEnums.FormAccordion,
+      id: 'advance-settings-id',
+      label: 'Show Advance Setting',
+      name: 'show_advance_settings',
+      required: false,
+      size: CommonSizeEnums.MEDIUM,
+      validation: {},
+    }
+  ],
+   advance_fields: [
+    {
+      color: CommonColorEnums.PRIMARY,
       component: ComponentEnums.FormInputToggleSwitch,
       helperText: 'Whether flag files should be checked for before collection',
       label: 'Flag File Check',
@@ -328,3 +341,5 @@ frontend: |
       size: CommonSizeEnums.SMALL,
     }
   ]
+
+  }
