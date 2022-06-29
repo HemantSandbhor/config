@@ -1,6 +1,6 @@
 worker: sftp-collect
 frontend: |
-           {
+           "{
              "basic_fields": [
               {
                "name": "connection_id",
@@ -11,4 +11,4 @@ frontend: |
                "id": "sftp.source.custom.connection_id"
               }
             ]
-          }
+          }"
