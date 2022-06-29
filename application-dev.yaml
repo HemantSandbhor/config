@@ -5,12 +5,10 @@ frontend: |
               {
                "name": "connection_id",
                "helperText": "The remote connection to use.",
-               "component": ComponentEnums.FormInputText,
                "placeholder": "Enter Connection Id",
                "label": "Connection Id",
                "required": true,
-               "id": "sftp.source.custom.connection_id",
-               "size": CommonSizeEnums.MEDIUM
+               "id": "sftp.source.custom.connection_id"
               }
             ]
           }
