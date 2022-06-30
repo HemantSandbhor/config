@@ -1,4 +1,4 @@
-{
+frontend: {
 "basic_fields": [{
 "name": "connection_id",
 "helperText": "The remote connection to use.",
