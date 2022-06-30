@@ -1,7 +1,7 @@
 worker: sftp-collect
 frontend:
 {
-        "basic_fields": [
+        "basic_fields" : [
                 {
                     name: "connection_id",
                     helperText: "The remote connection to use.",
@@ -11,12 +11,12 @@ frontend:
                     validation: {
                         [ValidationTypeEnums.REQUIRED]: {
                             message: 'Connection Id is required.',
-                            value: true,
+                            value: true
                         }
                     }
                 }
         ]
-        "advance_fields": [
+        "advance_fields" : [
                 {
                     color: CommonColorEnums.PRIMARY,
                     component: ComponentEnums.FormInputToggleSwitch,
@@ -24,7 +24,7 @@ frontend:
                     label: 'Flag File Check',
                     name: 'flag_file_enabled',
                     required: false,
-                    size: CommonSizeEnums.MEDIUM,
+                    size: CommonSizeEnums.MEDIUM
                 }
             ]
         
