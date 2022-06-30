@@ -1,5 +1,3 @@
-worker: sftp-collect
-frontend:
 {
         "basic_fields" : [
                 {
