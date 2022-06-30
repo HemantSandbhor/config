@@ -2,7 +2,7 @@ frontend: {
 "basic_fields": [{
 "name": "connection_id",
 "helperText": "The remote connection to use.",
-"component": "ComponentEnums.FormInputText",
+"component": "FormInputText",
 "placeholder": "Enter Connection Id",
 "label": "Connection Id",
 "validation": {
@@ -15,7 +15,7 @@ frontend: {
 },
 "required": true,
 "id": "sftp.source.custom.connection_id",
-"size": "CommonSizeEnums.MEDIUM"
+"size": "medium"
 
 }]
 }
