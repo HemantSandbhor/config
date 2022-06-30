@@ -1,29 +1,24 @@
 {
-        "basic_fields" : [
-                {
-                    name: "connection_id",
-                    helperText: "The remote connection to use.",
-                    component: ComponentEnums.FormInputText,
-                    placeholder: "Enter Connection Id",
-                    label: "Connection Id",
-                    validation: {
-                        [ValidationTypeEnums.REQUIRED]: {
-                            message: 'Connection Id is required.',
-                            value: true
-                        }
-                    }
-                }
-        ]
-        "advance_fields" : [
-                {
-                    color: CommonColorEnums.PRIMARY,
-                    component: ComponentEnums.FormInputToggleSwitch,
-                    helperText: 'Whether flag files should be checked for before collection',
-                    label: 'Flag File Check',
-                    name: 'flag_file_enabled',
-                    required: false,
-                    size: CommonSizeEnums.MEDIUM
-                }
-            ]
-        
+	"basic_fields": [{
+		"name": "connection_id",
+		"helperText": "The remote connection to use.",
+		"component": "ComponentEnums.FormInputText",
+		"placeholder": "Enter Connection Id",
+		"label": "Connection Id",
+		"validation": {
+			"onIncrementalChange": {
+
+				"ValidationTypeEnums.REQUIRED": {
+					"message": "Connection Id is required.",
+					"value": true
+				}
+
+
+			}
+		},
+		"required": true,
+		"id": "sftp.source.custom.connection_id",
+		"size": "CommonSizeEnums.MEDIUM"
+
+	}]
 }
