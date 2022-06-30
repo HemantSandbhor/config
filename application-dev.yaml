@@ -1,5 +1,5 @@
 {
-	"basic_fields": [{
+ "basic_fields": [{
 		"name": "connection_id",
 		"helperText": "The remote connection to use.",
 		"component": "ComponentEnums.FormInputText",
@@ -20,5 +20,5 @@
 		"id": "sftp.source.custom.connection_id",
 		"size": "CommonSizeEnums.MEDIUM"
 
-	}]
+ }]
 }
