@@ -7,7 +7,7 @@ frontend: {
 "label": "Connection Id",
 "validation": {
 "onIncrementalChange": {
-"ValidationTypeEnums.REQUIRED": {
+"REQUIRED": {
 "message": "Connection Id is required.",
 "value": true
 }
