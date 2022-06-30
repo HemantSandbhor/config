@@ -1,5 +1,8 @@
-frontend: {
-"basic_fields": [{
+worker: sftp-collect
+frontend: 
+{
+"basic_fields": [
+{
 "name": "connection_id",
 "helperText": "The remote connection to use.",
 "component": "FormInputText",
@@ -8,14 +11,284 @@ frontend: {
 "validation": {
 "onIncrementalChange": {
 "required": {
-"message": "Connection Id is required.",
-"value": true
-}
+"message": 'Connection Id is required.',
+"value": true,
+},
+"minLength": {
+"message": 'Connection Id must contain at least 25 characters.',
+"value": 25,
+},
+"maxLength": {
+"message": 'Connection Id must contain at most 30 characters.',
+"value": 30,
+},
 }
 },
 "required": true,
 "id": "sftp.source.custom.connection_id",
+"size": "medium",
+},
+{
+"name": "remote_path",
+"helperText": "The path on the remote system to scan for files.",
+"component": "FormInputText",
+"placeholder": "Enter Remote System Path",
+"label": "Remote System Path",
+"validation": {
+"onIncrementalChange": {
+"required": {
+"message": 'Remote System Path is required.',
+"value": true,
+},
+}
+},
+"required": true,
+"id": "sftp.supplier.remote-dir",
+"size": "medium",
+},
+{
+"name": "filename_pattern",
+"helperText": "Filename pattern to match when collecting files.",
+"component": "FormInputText",
+"placeholder": "Enter Filename Pattern",
+"defaultValue": '*',
+"label": "Filename Pattern",
+"validation": { },
+"required": false,
+"id": "sftp.supplier.filename-pattern",
+"size": "medium",
+},
+{
+"name": "schedule",
+"helperText": "Schedule on which to collect files",
+"component": "FormInputText",
+"placeholder": "Enter Schedule Cron Expression",
+"defaultValue": '* * * * *',
+"label": "Schedule Cron Expression",
+"validation": {
+"onIncrementalChange": {
+"required": {
+"message": 'Schedule Cron Expression is required.',
+"value": true,
+},
+}
+},
+"required": false,
+"id": "sftp.source.custom.schedule",
+"size": "medium",
+},
+{
+"name": "duplicate_file_action",
+"helperText": "How should duplicate files be handled",
+"component": "FormInputSelect",
+"placeholder": "Select Duplicate File Action",
+"label": "Duplicate File Action",
+"defaultValue": "ignore",
+"shrinkLabel": false,
+"validation": { },
+"required": false,
+"lookup": [
+{
+"id": 1,
+"label": "Ignore",
+"value": "ignore"
+},
+{
+"id": 2,
+"label": "Collect and process",
+"value": "collect-and-process"
+},
+{
+"id": 3,
+"label": "Collect but skip processing",
+"value": "collect-but-skip-processing"
+}
+],
+"id": "file.prevent-duplicates",
 "size": "medium"
+},
+{
+"name": "post_collect_action",
+"helperText": "What should be done with the original files on the remote system after successful collection",
+"component": "FormInputSelect",
+"placeholder": "Select Post Collect Action",
+"label": "Select Post Collect Action",
+"defaultValue": "Ignore",
+"validation": { },
+"required": false,
+"shrinkLabel": false,
+"lookup": [
+{
+"id": 1,
+"label": "Do nothing",
+"value": "do-nothing"
+},
+{
+"id": 2,
+"label": "Rename files",
+"value": "rename-files"
+},
+{
+"id": 3,
+"label": "Move files",
+"value": "move-files"
+},
+{
+"id": 4,
+"label": "Delete files",
+"value": "delete-files"
+}
+],
+"size": "medium"
+},
+{
+"name": "rename_remote_file",
+"helperText": "Set a exppression to rename files on remote SFTP server",
+"component": "FormInputText",
+"placeholder": "Rename file expression",
+"label": "Rename file expression",
+"conditionalRender": {
+"post_collect_action": 'rename-files',
+},
+"defaultValue": "none",
+"validation": {
+"onIncrementalChange": {
+"required": {
+"message": 'Rename file expression is required.',
+"value": true,
+},
+}
+},
+"required": true,
+"id": "sftp.supplier.rename-remote-files-to",
+"size": "medium",
+},
+{
+"name": "move_remote_file",
+"helperText": "Set a exppression to move files on remote SFTP server",
+"component": "FormInputText",
+"placeholder": "Move file expression",
+"label": "Move file expression",
+"conditionalRender": {
+"post_collect_action": 'move-files',
+},
+"defaultValue": "none",
+"validation": {
+"onIncrementalChange": {
+"required": {
+"message": 'Move file expression is required.',
+"value": true,
+},
+}
+},
+"required": true,
+"id": "sftp.supplier.rename-remote-files-to-move",
+"size":  "medium",
+},
+{
+"color": "primary",
+"component": "FormAccordion",
+"id": 'advance-settings-id',
+"label": 'Show Advance Setting',
+"name": 'show_advance_settings',
+"required": false,
+"size": "medium",
+"validation": {},
+}
+],
+"advance_fields": [
+{
+"color": "primary",
+"component": "FormInputToggleSwitch",
+"helperText": 'Whether flag files should be checked for before collection',
+"label": 'Flag File Check',
+"name": 'flag_file_enabled',
+"required": false,
+"size": "medium",
+"validation": { },
+},
+{
+"name": "flag_file_pattern",
+"helperText": "Filename pattern to match when checking for flag files",
+"component": "FormInputText",
+"placeholder": "Enter Flag File Pattern",
+"label": "Flag File Check Pattern",
+"conditionalRender": {
+"flag_file_enabled": true,
+},
+"validation": {
+"onIncrementalChange": {
+"required": {
+"message": 'Flag file pattern is required.',
+"value": true,
+},
+}
+},
+"required": true,
+"id": "sftp.source.custom.flag-file-pattern",
+"size": "medium",
+},
+{
+"name": 'retry_enabled',
+"color": "primary",
+"component": "FormInputToggleSwitch",
+"helperText": 'Whether a file collection should be retried in the event of an error',
+"label": 'Retry When Error',
+"required": false,
+"size": "medium",
+"validation": { },
+},
+{
+"name": "retry_count",
+"helperText": "How many times file collection should be retried in the event of an error",
+"component": "FormInputText",
+"placeholder": "Enter Retry Count",
+"label": "Retry Count",
+"conditionalRender": {
+"retry_enabled": true,
+},
+"type": "number",
+"validation": {
+"onIncrementalChange": {
+"required": {
+"message": 'Connection Id is required.',
+"value": true,
+},
+"min": {
+"message": 'Retry count must start with 1.',
+"value": 1,
+},
+"max": {
+"message": 'Retry count must not be greater than 10.',
+"value": 10,
+},
+}
+},
+"required": true,
+"id": "sftp.source.custom.retry.retry-count",
+"size": "small",
+},
+{
+"name": "retry_interval",
+"helperText": "How often file collection should be retried in the event of an error. Interval will be value and time unit combination, such as 10s for 10 seconds or 30m for 30 minutes. Allowed units are seconds, minutes and hours.",
+"component": "FormInputText",
+"placeholder": "Enter Retry Interval",
+"label": "Retry Interval",
+"conditionalRender": {
+"retry_enabled": true,
+},
+"validation": {
+"onIncrementalChange": {
+"required": {
+"message": 'Retry Interval is required.',
+"value": true,
+},
+}
+},
+"required": true,
+"id": "sftp.source.custom.retry.retry-interval",
+"size": "small",
+}
+]
 
-}]
 }
