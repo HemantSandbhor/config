@@ -145,9 +145,6 @@ frontend: {
 "component": "FormInputText",
 "placeholder": "Rename file expression",
 "label": "Rename file expression",
-"conditionalRender": {
-"post_collect_action": 'rename-files',
-},
 "defaultValue": "none",
 "validation": {
 "onIncrementalChange": {
@@ -167,9 +164,6 @@ frontend: {
 "component": "FormInputText",
 "placeholder": "Move file expression",
 "label": "Move file expression",
-"conditionalRender": {
-"post_collect_action": 'move-files',
-},
 "defaultValue": "none",
 "validation": {
 "onIncrementalChange": {
@@ -211,9 +205,6 @@ frontend: {
 "component": "FormInputText",
 "placeholder": "Enter Flag File Pattern",
 "label": "Flag File Check Pattern",
-"conditionalRender": {
-"flag_file_enabled": true,
-},
 "validation": {
 "onIncrementalChange": {
 "required": {
@@ -242,9 +233,6 @@ frontend: {
 "component": "FormInputText",
 "placeholder": "Enter Retry Count",
 "label": "Retry Count",
-"conditionalRender": {
-"retry_enabled": true,
-},
 "type": "number",
 "validation": {
 "onIncrementalChange": {
@@ -272,9 +260,6 @@ frontend: {
 "component": "FormInputText",
 "placeholder": "Enter Retry Interval",
 "label": "Retry Interval",
-"conditionalRender": {
-"retry_enabled": true,
-},
 "validation": {
 "onIncrementalChange": {
 "required": {
