@@ -1,24 +1,24 @@
 {
  "basic_fields": [{
-		"name": "connection_id",
-		"helperText": "The remote connection to use.",
-		"component": "ComponentEnums.FormInputText",
-		"placeholder": "Enter Connection Id",
-		"label": "Connection Id",
-		"validation": {
-			"onIncrementalChange": {
+	"name": "connection_id",
+	"helperText": "The remote connection to use.",
+	"component": "ComponentEnums.FormInputText",
+	"placeholder": "Enter Connection Id",
+	"label": "Connection Id",
+	"validation": {
+		"onIncrementalChange": {
 
-				"ValidationTypeEnums.REQUIRED": {
-					"message": "Connection Id is required.",
-					"value": true
-				}
-
-
+			"ValidationTypeEnums.REQUIRED": {
+				"message": "Connection Id is required.",
+				"value": true
 			}
-		},
-		"required": true,
-		"id": "sftp.source.custom.connection_id",
-		"size": "CommonSizeEnums.MEDIUM"
+
+
+		}
+	},
+	"required": true,
+	"id": "sftp.source.custom.connection_id",
+	"size": "CommonSizeEnums.MEDIUM"
 
  }]
 }
