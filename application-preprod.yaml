@@ -1,0 +1,7 @@
+worker: sftp-collect
+frontend:
+ basic_fields:
+  name: "connection_id",
+  helperText: "The remote connection to use."
+  component: ComponentEnums.FormInputText
+  placeholder: "Enter Connection Id"
