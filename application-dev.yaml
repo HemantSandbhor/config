@@ -291,28 +291,24 @@ frontend: {
 
 }
 
+
 backend: 
   connection_id:
     key: sftp.custom.connection-id
     valueFrom: connection_id
-    options: false
   remote_path:
       key: sftp.supplier.remote-dir
       valueFrom: remote_path
-      options: false
   filename_pattern:
       key: sftp.supplier.filename-pattern
       valueFrom: filename_pattern
-      default: ""
-      options: false
+      default: ".*"
   schedule:
       key: sftp.custom.schedule
       valueFrom: schedule
       default: "* * * * * *"
-      options: false
   duplicate_file_action:
       default: ignore
-      options: true
       values:
          ignore :
             - key: sftp.supplier.file.prevent-duplicates
@@ -325,7 +321,6 @@ backend:
               value: true
   post_collect_action:
       default: do-nothing
-      options: true
       values:
          do-nothing:
          rename-files:
@@ -343,24 +338,25 @@ backend:
       key: sftp.custom.flag-file-enabled
       valueFrom: flag_file_enabled
       default: false
-      options: false
   flag_file_pattern:
       key: sftp.custom.flag-file-pattern
       valueFrom: flag_file_pattern
       default: ""
-      options: false
+      dependsOn:
+        flag_file_enabled: true
   retry_enabled:
       key: sftp.custom.retry-enabled
       valueFrom: retry_enabled
       default: false
-      options: false
   retry_count:
       key: sftp.custom.retry-count
       valueFrom: retry_count
       default: 0
-      options: false
+      dependsOn:
+        retry_enabled: true
   retry_interval:
       key: sftp.custom.retry-interval
       valueFrom: retry_interval
       default: ""
-      options: false
+      dependsOn:
+        retry_enabled: true
