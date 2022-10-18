@@ -3,25 +3,17 @@ frontend: {
 "basic_fields": [{
 "name": "connection_id",
 "helperText": "The remote connection to use.",
-"component": "FormInputText",
+"component": "FormInputApiLookupSelect",
 "placeholder": "Enter Connection Id",
 "label": "Connection Id",
-"validation": {
-"onIncrementalChange": {
-"required": {
-"message": 'Connection Id is required.',
-"value": true,
-},
-"minLength": {
-"message": 'Connection Id must contain at least 25 characters.',
-"value": 25,
-},
-"maxLength": {
-"message": 'Connection Id must contain at most 30 characters.',
-"value": 30,
-},
-}
-},
+"url": "https://dev04-insight.4cgroup.co.za/api/connection/file?protocol=SFTP",
+  "timeout": 5,
+  "responseMapping": {
+    "value": "response.id",
+    "name": "response.name",
+    "description": "response.description"
+  },
+"errorMessage": "Could not complete API call to Connection Registry!",
 "required": true,
 "id": "sftp.source.custom.connection_id",
 "size": "medium",
