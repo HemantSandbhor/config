@@ -3,7 +3,7 @@ frontend: {
 "basic_fields": [{
 "name": "connection_id",
 "helperText": "The remote connection to use.",
-"component": "FormInputApiLookupSelect",
+"component": "FormInputApiSelect",
 "placeholder": "Enter Connection Id",
 "label": "Connection Id",
 "url": "https://dev04-insight.4cgroup.co.za/api/connection/file?protocol=SFTP",
