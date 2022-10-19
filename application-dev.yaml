@@ -5,7 +5,6 @@ frontend: {
 "helperText": "The remote connection to use.",
 "component": "FormInputApiSelect",
 "placeholder": "Enter Connection Id",
-"apiLookup": "() => DataFlowClient.getConnectionId(''/connection/file?protocol=SFTP'')",
 "label": "Connection Id",
   "timeout": 5,
   "responseMapping": {
