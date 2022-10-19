@@ -6,7 +6,6 @@ frontend: {
 "component": "FormInputApiSelect",
 "placeholder": "Enter Connection Id",
 "label": "Connection Id",
-"apiLookup": "/connection/file?protocol=SFTP",
   "timeout": 5,
   "responseMapping": {
     "value": "response.id",
