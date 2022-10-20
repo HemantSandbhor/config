@@ -16,9 +16,7 @@ frontend: {
 "errorMessage": "Could not complete API call to Connection Registry!",
 "required": true,
 "id": "sftp.source.custom.connection_id",
-"size": "medium",
-"readOnly": !isDisabled(mode),
-"shrinkLabel": false,
+"size": "medium"
 },
 {
 "name": "remote_path",
