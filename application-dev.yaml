@@ -7,16 +7,18 @@ frontend: {
 "placeholder": "Enter Connection Id",
 "apiLookup": "/connection/file?protocol=SFTP",
 "label": "Connection Id",
-  "timeout": 5,
-  "responseMapping": {
+"timeout": 5,
+"responseMapping": {
     "value": "response.name",
     "name": "response.name",
     "description": "response.name"
-  },
+ },
 "errorMessage": "Could not complete API call to Connection Registry!",
 "required": true,
 "id": "sftp.source.custom.connection_id",
 "size": "medium",
+"readOnly": !isDisabled(mode),
+"shrinkLabel": false,
 },
 {
 "name": "remote_path",
