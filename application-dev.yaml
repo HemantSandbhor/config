@@ -9,9 +9,9 @@ frontend: {
 "label": "Connection Id",
 "timeout": 5,
 "responseMapping": {
-    "value": "response.name",
-    "name": "response.name",
-    "description": "response.name"
+    "value": "response.id",
+    "name": "response.id",
+    "description": "response.description"
  },
 "errorMessage": "Could not complete API call to Connection Registry!",
 "required": true,
