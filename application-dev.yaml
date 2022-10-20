@@ -3,16 +3,15 @@ frontend: {
 "basic_fields": [{
 "name": "connection_id",
 "helperText": "The remote connection to use.",
-"component": "FormInputApiSelect",
+"component": "FormInputText",
 "placeholder": "Enter Connection Id",
 "apiLookup": "/connection/file?protocol=SFTP",
 "label": "Connection Id",
-"displayName": "Connection",
 "timeout": 5,
 "responseMapping": {
-    "value": "response.id",
-    "displayName": "response.name",
-    "description": "response.description"
+ "value": "response.id",
+ "displayName": "response.name",
+ "description": "response.description"
  },
 "errorMessage": "Could not complete API call to Connection Registry!",
 "required": true,
