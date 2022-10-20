@@ -11,7 +11,7 @@ frontend: {
 "timeout": 5,
 "responseMapping": {
     "value": "response.id",
-    "name": "response.id",
+    "displayName": "response.name",
     "description": "response.description"
  },
 "errorMessage": "Could not complete API call to Connection Registry!",
