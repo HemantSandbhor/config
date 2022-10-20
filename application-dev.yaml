@@ -3,8 +3,9 @@ frontend: {
 "basic_fields": [{
 "name": "connection_id",
 "helperText": "The remote connection to use.",
-"component": "FormInputApiSelectLookup",
+"component": "FormInputApiSelect",
 "placeholder": "Enter Connection Id",
+"helperText": "connection id",
 "apiLookup": "/connection/file?protocol=SFTP",
 "label": "Connection Id",
 "timeout": 5,
@@ -15,6 +16,7 @@ frontend: {
  },
 "errorMessage": "Could not complete API call to Connection Registry!",
 "required": true,
+"shrinkLabel": false,
 "id": "sftp.source.custom.connection_id",
 "size": "medium"
 },
