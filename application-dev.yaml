@@ -5,7 +5,7 @@ frontend: {
 "helperText": "The remote connection to use.",
 "component": "FormInputApiSelect",
 "placeholder": "Enter Connection Id",
-"helperText": "connection id",
+
 "apiLookup": "/connection/file?protocol=SFTP",
 "label": "Connection Id",
 "timeout": 5,
