@@ -3,7 +3,7 @@ frontend: {
 "basic_fields": [{
 "name": "connection_id",
 "helperText": "The remote connection to use.",
-"component": "FormInputText",
+"component": "FormInputApiSelectLookup",
 "placeholder": "Enter Connection Id",
 "apiLookup": "/connection/file?protocol=SFTP",
 "label": "Connection Id",
