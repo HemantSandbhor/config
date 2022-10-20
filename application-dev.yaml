@@ -16,8 +16,6 @@ frontend: {
  },
 "errorMessage": "Could not complete API call to Connection Registry!",
 "required": true,
-"shrinkLabel": false,
-"readOnly": !isDisabled(mode),
 "id": "sftp.source.custom.connection_id",
 "size": "medium"
 },
