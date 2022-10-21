@@ -8,9 +8,10 @@ frontend: {
 "label": "Connection Id",
 "timeout": 5,
 "errorMessage": "Could not complete API call to Connection Registry!",
-"required": true,
 "id": "sftp.source.custom.connection_id",
-"size": "medium"
+"size": "medium",
+"shrinkLabel": false,
+"validation": "{ onIncrementalChange: { required: true } }",
 },
 {
 "name": "remote_path",
