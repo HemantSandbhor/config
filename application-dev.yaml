@@ -4,15 +4,9 @@ frontend: {
 "name": "connection_id",
 "component": "FormInputApiSelect",
 "placeholder": "Enter Connection Id",
-
 "apiLookup": "/connection/file?protocol=SFTP",
 "label": "Connection Id",
 "timeout": 5,
-"responseMapping": {
- "value": "response.id",
- "displayName": "response.name",
- "description": "response.description"
- },
 "errorMessage": "Could not complete API call to Connection Registry!",
 "required": true,
 "id": "sftp.source.custom.connection_id",
