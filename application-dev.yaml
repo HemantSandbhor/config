@@ -16,7 +16,8 @@ frontend: {
     "icon": "logo"
 },
 "shrinkLabel": false,
-"validation": { "onIncrementalChange": { "required": false } },
+"validation": { "onIncrementalChange": { "required": true,
+"message": "This is required"} },
 "required": true,
 },
 {
