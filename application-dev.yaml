@@ -3,7 +3,6 @@ frontend: {
 "basic_fields": [{
 "name": "connection_id",
 "component": "FormInputApiSelect",
-"placeholder": "Enter Connection Id",
 "apiLookup": "/file?protocol=SFTP",
 "label": "Select Connection",
 "timeout": 5,
