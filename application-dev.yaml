@@ -16,9 +16,9 @@ frontend: {
     "icon": "logo"
 },
 "shrinkLabel": false,
-"validation": { "onIncrementalChange": { "required": true,
-"message": "This is required"} },
-"required": true,
+"validation": { "onIncrementalChange": { "required": {
+"message": "This is required",
+"value": true}}
 },
 {
 "name": "remote_path",
