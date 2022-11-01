@@ -16,11 +16,16 @@ frontend: {
     "icon": "logo"
 },
 "shrinkLabel": false,
-"validation": { "onIncrementalChange": { "required": {
-"message": "This is required",
-"value": true},
+"validation": {
+"onIncrementalChange": {
+"required": {
+"message": 'Remote System Path is required.',
+"value": true,
+},
 }
 },
+},
+{
 "name": "remote_path",
 "helperText": "The path on the remote system to scan for files.",
 "component": "FormInputText",
