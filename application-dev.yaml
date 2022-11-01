@@ -10,6 +10,12 @@ frontend: {
 "errorMessage": "Could not complete API call to Connection Registry!",
 "id": "sftp.source.custom.connection_id",
 "size": "medium",
+"responseMapping": "{
+    "value": "id",
+    "name": "name",
+    "description": "description",
+    "icon": "logo"
+}",
 "shrinkLabel": false,
 "validation": "{ onIncrementalChange: { required: true } }",
 },
