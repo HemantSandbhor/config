@@ -11,10 +11,10 @@ frontend: {
 "id": "sftp.source.custom.connection_id",
 "size": "medium",
 "responseMapping": "{
-    "value": "id",
-    "name": "name",
-    "description": "description",
-    "icon": "logo"
+    value: "id",
+    label: "name",
+    description: "description",
+    icon: "logo"
 }",
 "shrinkLabel": false,
 "validation": "{ onIncrementalChange: { required: true } }",
