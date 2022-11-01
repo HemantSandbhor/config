@@ -17,6 +17,7 @@ frontend: {
 },
 "shrinkLabel": false,
 "validation": "{ onIncrementalChange: { required: true } }",
+"required": true,
 },
 {
 "name": "remote_path",
