@@ -18,9 +18,9 @@ frontend: {
 "shrinkLabel": false,
 "validation": { "onIncrementalChange": { "required": {
 "message": "This is required",
-"value": true}}
+"value": true},
+}
 },
-{
 "name": "remote_path",
 "helperText": "The path on the remote system to scan for files.",
 "component": "FormInputText",
