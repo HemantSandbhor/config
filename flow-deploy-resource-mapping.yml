@@ -1,0 +1,33 @@
+resources:
+  - name: deployment
+    file_name: test-deploy.yaml
+    placeholders:
+      - name-postfix: 'data_engine'
+      - version: 'stable'
+      - replicas: "2"
+      - pull-policy: "Always"
+      - resources-memory: "1024Mi"
+      - resources-cpu: "250m"
+  - name: service
+    file_name: endpoints-service.yml
+    placeholders:
+      - name-postfix: 'service'
+      - port: '80'
+      - target-port: "80"
+  - name: network
+    file_name: network-policy.yml
+    placeholders:
+      - name-postfix: 'network'
+  - name: endpoint
+    file_name: endpoints-service.yml
+    placeholders:
+      - name-postfix: 'endpoint'
+
+# if the mapping is not defined for any app then the deployment resource get used by default, if specifically defined
+# then specific resource get used during deployment. This mapping need requires defining n additional k8s resources needed
+# for app specific deployment.
+data-flow-apps-mapping:
+  - name: sftp-collect
+    resources: ['service']
+  - name: sftp-distribute
+    resources: ['service', 'endpoint']
