@@ -31,3 +31,7 @@ data-flow-apps-mapping:
     resources: ['service']
   - name: sftp-distribute
     resources: ['service', 'endpoint']
+
+app-k8s-resources:
+  sftp-collect: ['service']
+  sftp-distribute: ['service', 'endpoint']
