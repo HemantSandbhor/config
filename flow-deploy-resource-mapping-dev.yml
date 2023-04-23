@@ -10,7 +10,7 @@ resources:
       resources-memory: "1024Mi"
       resources.cpu: "250m"
   service: 
-    file_name: test-svc.yaml
+    fileName: test-svc.yaml
     placeholders:
       name: 'service'
       port: '80'
