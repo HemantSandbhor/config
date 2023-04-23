@@ -7,7 +7,7 @@ resources:
       replicas: "2"
       containerPort: "8080"
       pullPolicy: "Always"
-      resources-memory: "1024Mi"
+      resources.memory: "1024Mi"
       resources.cpu: "250m"
   service: 
     fileName: test-svc.yaml
