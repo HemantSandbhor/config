@@ -2,7 +2,7 @@ resources:
   deployment: 
     fileName: test-deployment.yaml
     placeholders:
-      name: 'data_engine'
+      name: 'data-engine'
       version: 'stable'
       replicas: "2"
       containerPort: "8080"
