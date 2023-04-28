@@ -28,5 +28,5 @@ resources:
 # then specific resource get used during deployment. This mapping need requires defining n additional k8s resources needed
 # for app specific deployment.
 app-resources:
-  sftp-collect: ['service']
-  sftp-distribute: ['service', 'endpoint']
+  fileCollect: ['service']
+  fileCompress: ['service', 'endpoint']
