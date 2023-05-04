@@ -30,3 +30,4 @@ resources:
 app-resources:
   fileCollect: ['service']
   fileCompress: ['service', 'endpoint']
+  sftp-distribute: ['service']
