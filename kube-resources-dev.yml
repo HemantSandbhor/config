@@ -6,7 +6,7 @@ resources:
       version: 'stable'
       replicas: "2"
       containerPort: "8080"
-      pullPolicy: "Always"
+      pullPolicy: "Never"
       resourcesMemory: "1024Mi"
       resourcesCpu: "250m"
   service: 
