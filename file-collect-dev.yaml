@@ -4,7 +4,7 @@ backend:
   threads:
     key: threads
     valueFrom: threads
-    default: "10"
+    default: 10
   scheduler_cron:
       key: scheduler-cron
       valueFrom: scheduler_cron
