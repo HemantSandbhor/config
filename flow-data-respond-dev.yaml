@@ -1,0 +1,6 @@
+worker: flow-data-respond
+
+backend:
+  customSetting:
+    key: custom-properties.customSetting
+    valueFrom: custom_setting

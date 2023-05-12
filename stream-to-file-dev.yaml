@@ -1,0 +1,7 @@
+worker: stream-to-file
+
+backend:
+  source_path:
+      key: custom-properties.file-dir
+      valueFrom: file_dir
+      default: "test/output"

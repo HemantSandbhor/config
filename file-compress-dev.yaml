@@ -1,0 +1,11 @@
+worker: file-compress
+
+backend:
+  format:
+      key: custom-properties.format
+      valueFrom: format
+      default: "gzip"
+  file_action:
+    key: custom-properties.fileAction
+    valueFrom: file_action
+    default: "decompress"

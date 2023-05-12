@@ -1,0 +1,19 @@
+worker: file-collect
+
+backend:
+  threads:
+    key: threads
+    valueFrom: threads
+    default: "10"
+  scheduler_cron:
+      key: scheduler-cron
+      valueFrom: scheduler_cron
+      default: "0/30 * * * * *"
+  source_path:
+      key: custom-properties.source-path
+      valueFrom: source_path
+      default: "/"
+  filename_pattern:
+    key: custom-properties.filename-pattern
+    valueFrom: filename_pattern
+    default: "*.*"
