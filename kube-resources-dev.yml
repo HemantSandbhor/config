@@ -5,10 +5,10 @@ resources:
       name: 'data-engine'
       version: 'stable'
       replicas: "2"
-      containerPort: "8080"
+      containerPort: "9090"
       pullPolicy: "Never"
-      resourcesMemory: "1024Mi"
-      resourcesCpu: "250m"
+      resources.memory: "1024Mi"
+      resources.cpu: "250m"
   service: 
     fileName: test-svc.yaml
     placeholders:
