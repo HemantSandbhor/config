@@ -1,32 +1,21 @@
 resources:
-  deployment: 
+  deployment:
     fileName: test-deployment.yaml
     placeholders:
       name: 'data-engine'
       version: 'stable'
       replicas: "2"
-      containerPort: "9090"
-      pullPolicy: "Never"
-      resourcesMemory: "2048Mi"
-      resourcesCpu: "512m"
-  service: 
+      pullPolicy: "Always"
+      resourcesMemory: "1024Mi"
+      resourcesCpu: "1"
+  service:
     fileName: test-svc.yaml
     placeholders:
       name: 'service'
-      port: '80'
-      targetPort: "80"
-  network: 
-    fileName: network-policy.yml
-    placeholders:
-      name: 'network'
-  endpoint:
-    fileName: endpoints-service.yml
-    placeholders:
-      name: 'endpoint'
-     
+
 # if the mapping is not defined for any app then the deployment resource get used by default, if specifically defined
 # then specific resource get used during deployment. This mapping need requires defining n additional k8s resources needed
 # for app specific deployment.
 app-resources:
+  test-app: ['service']
   file-collect: ['service']
-  generic-http: ['service', 'endpoint']
