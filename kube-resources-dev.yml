@@ -5,7 +5,7 @@ resources:
       name: 'data-engine'
       version: 'stable'
       replicas: "2"
-      pullPolicy: "Always"
+      pullPolicy: "Never"
       resourcesMemory: "1024Mi"
       resourcesCpu: "1"
   service:
