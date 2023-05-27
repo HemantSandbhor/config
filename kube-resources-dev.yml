@@ -1,6 +1,6 @@
 resources:
   deployment:
-    fileName: test-deployment.yaml
+    fileName: deployment.yaml
     placeholders:
       name: 'data-engine'
       version: 'stable'
