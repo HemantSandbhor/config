@@ -9,7 +9,7 @@ resources:
       resourcesMemory: "1024Mi"
       resourcesCpu: "1"
   service:
-    fileName: test-svc.yaml
+    fileName: service.yaml
     placeholders:
       name: 'service'
 
