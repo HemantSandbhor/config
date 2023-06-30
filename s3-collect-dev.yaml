@@ -1,0 +1,172 @@
+worker: s3-collect
+
+backend:
+  connection_id:
+    key: custom-properties.connection-id
+    valueFrom: connection_id
+  bucket_name:
+    key: custom-properties.s3-bucket
+    valueFrom: remote_bucket
+  remote_path:
+    key: custom-properties.source-path
+    valueFrom: remote_path
+  filename_pattern:
+    key: custom-properties.filename-pattern
+    valueFrom: filename_pattern
+    default: ".*"
+  schedule:
+    key: scheduler-cron
+    valueFrom: schedule
+    default: "* * * * *"
+  post_collect_action:
+    key: custom-properties.remote-action
+    default: DELETE
+    values:
+      NO_ACTION:
+      DELETE:
+      RENAME:
+        - key: custom-properties.remote-action-rename-pattern
+          valueFrom: rename_remote_file
+      MOVE:
+        - key: custom-properties.remote-action-new-path
+          valueFrom: move_remote_file
+      MOVE_AND_RENAME:
+        - key: custom-properties.remote-action-rename-pattern
+          valueFrom: rename_remote_file
+        - key: custom-properties.remote-action-new-path
+          valueFrom: move_remote_file
+
+frontend:
+  basic_fields:
+    - apiLookup: /s3
+      component: FormInputApiSelect
+      errorMessage: Could not complete API call to Connection Registry!
+      helperText: The remote connection to use.
+      id: connection_id
+      label: Select Connection
+      name: connection_id
+      responseMapping:
+        description: description
+        icon: logo
+        label: name
+        name: id
+        value: id
+      shrinkLabel: false
+      size: medium
+      timeout: 5
+      validation:
+        onIncrementalChange:
+          required: true
+    - component: FormInputText
+      helperText: The AWS bucket name to scan for files.
+      id: remote_bucket
+      label: Bucket Name
+      name: remote_bucket
+      placeholder: Enter Bucket Name
+      required: true
+      size: medium
+      validation:
+        onIncrementalChange:
+          required:
+            message: Bucket name is required.
+            value: true
+    - component: FormInputText
+      helperText: The AWS S3 path to scan for files.
+      id: remote_path
+      label: Bucket Path
+      name: remote_path
+      placeholder: Enter Path
+      required: true
+      size: medium
+      validation:
+        onIncrementalChange:
+          required:
+            message: Bucket Path is required.
+            value: true
+    - component: FormInputText
+      defaultValue: '.*'
+      helperText: Filename pattern to match when collecting files.
+      id: filename_pattern
+      label: Filename Pattern
+      name: filename_pattern
+      placeholder: Enter Filename Pattern
+      required: false
+      size: medium
+      validation: {}
+    - component: ScheduleBuilderInput
+      helperText: Schedule on which to collect files
+      id: schedule
+      name: schedule
+      required: true
+      validation:
+        onIncrementalChange:
+          required:
+            value: true
+    - component: FormInputSelect
+      defaultValue: DELETE
+      helperText: >-
+        What should be done with the original files on the remote system after
+        successful collection
+      id: post_collect_action
+      label: Select Post Collect Action
+      lookup:
+        - id: 1
+          label: Do nothing
+          value: NO_ACTION
+        - id: 2
+          label: Rename files
+          value: RENAME
+        - id: 3
+          label: Move files
+          value: MOVE
+        - id: 4
+          label: Move and Rename files
+          value: MOVE_AND_RENAME
+        - id: 5
+          label: Delete files
+          value: DELETE
+      name: post_collect_action
+      placeholder: Select Post Collect Action
+      required: false
+      shrinkLabel: false
+      size: medium
+      validation: {}
+    - component: FormInputText
+      conditionalRender:
+        - post_collect_action: MOVE
+        - post_collect_action: MOVE_AND_RENAME
+      defaultValue: none
+      helperText: Set a path to move files on S3
+      id: move_remote_file
+      label: Directory to move files
+      name: move_remote_file
+      placeholder: Directory to move files
+      required: true    
+      size: medium
+      validation:
+        onIncrementalChange:
+          required:
+            message: Path to move files is required.
+            value: true
+    - component: FormInputText
+      conditionalRender:
+        - post_collect_action: RENAME
+        - post_collect_action: MOVE_AND_RENAME
+      defaultValue: '{fileName}'
+      helperText: Set an expression to rename files on S3
+      id: rename_remote_file
+      label: Rename file expression
+      name: rename_remote_file
+      placeholder: Rename file expression   
+      required: true
+      size: medium
+      validation:
+        onIncrementalChange:
+          required:
+            message: Rename file expression is required.
+            value: true
+          pattern:
+            message: >-
+              Please use a valid file rename pattern for eg- {fileName}_{DATE_YYYYMMdd-HHmmss}.done or
+              {fileName}.
+            value: '.*?\{(?:fileName|\{DATE_[^}]*\})*\}.*'
