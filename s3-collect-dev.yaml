@@ -38,7 +38,7 @@ backend:
 
 frontend:
   basic_fields:
-    - apiLookup: /s3
+    - apiLookup: ${INSIGHT_SERVICE_BASEURI}/api/connection-registry/lookup/connection/s3
       component: FormInputApiSelect
       errorMessage: Could not complete API call to Connection Registry!
       helperText: The remote connection to use.
